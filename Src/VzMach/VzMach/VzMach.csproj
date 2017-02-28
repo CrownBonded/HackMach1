@@ -267,6 +267,10 @@
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Components\build-plan\build-plan.controller.js" />
     <Content Include="Components\build-plan\build-plan.html" />
+    <Content Include="Components\footer\footer.controller.js" />
+    <Content Include="Components\Styles\Footer.css" />
+    <Content Include="Components\footer\footer.directive.js" />
+    <Content Include="Components\footer\footer.html" />
     <Content Include="Components\header\header.controller.js" />
     <Content Include="Components\header\header.directive.js" />
     <Content Include="Components\header\header.html" />
@@ -391,7 +395,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\chat\" />
-    <Folder Include="Components\footer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
