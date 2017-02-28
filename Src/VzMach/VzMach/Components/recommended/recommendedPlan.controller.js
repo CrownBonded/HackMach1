@@ -11,7 +11,7 @@
 angular.module('vzMach')
   .controller('recommendedPlanController', ['$scope', '$state', '$rootScope', '$timeout', 'vzService', '$stateParams',
 	function ($scope, $state, $rootScope, $timeout, vzService, $stateParams) {
-      
+	    $rootScope.isFeedbackVisible = true;
 	    var vm = this;
 	    vm.index = $stateParams.index;
 	    vm.listIndex = 0;

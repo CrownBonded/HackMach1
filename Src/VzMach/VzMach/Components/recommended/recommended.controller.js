@@ -11,6 +11,7 @@
 angular.module('vzMach')
   .controller('recommendedController', ['$scope', '$state', '$rootScope', '$timeout',
 	function ($scope, $state, $rootScope, $timeout) {
+	    $rootScope.isFeedbackVisible = false;
 	    var vm = this;
 	    vm.select = function (indexValue) {
 	        $state.go("recommendedPlan", { index: indexValue });
