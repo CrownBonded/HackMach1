@@ -9,8 +9,8 @@
  */
 
 angular.module('vzMach')
-  .controller('byobController', ['$scope', '$state', '$rootScope', '$timeout','vzService',
-	function ($scope, $state, $rootScope, $timeout,vzService) {
+  .controller('byobController', ['$scope', '$state', '$rootScope', '$timeout', 'vzService',
+	function ($scope, $state, $rootScope, $timeout, vzService) {
 	    $rootScope.isFeedbackVisible = true;
 
 	    var vm = this;
@@ -35,12 +35,28 @@ angular.module('vzMach')
 	        }
 	    };
 
+	    vm.click = function (button) {
+	        if (button == "tv") {
+	            vm.isTvOnly = true;
+	            vm.isDataOnly = false;
+	            vm.isBoth = false;
+	        }
+	        else if (button == "data") {
+	            vm.isTvOnly = false;
+	            vm.isDataOnly = true;
+	            vm.isBoth = false;
+	        }
+	        else if (button == "both") {
+	            vm.isTvOnly = false;
+	            vm.isDataOnly = false;
+	            vm.isBoth = true;
+	        }
 
+	    };
 	    vm.checkoutButton = false;
 	    vm.checkoutButtonClick = function () {
-	        if (vm.selectedPlan != null)
-	        {
-	            vzService.UpdateCart(vm.selectedPlan.BundleId,"CORE")
+	        if (vm.selectedPlan != null) {
+	            vzService.UpdateCart(vm.selectedPlan.BundleId, "CORE")
 	        }
 	        if (vm.selectedEquipment != null) {
 	            vzService.UpdateCart(vm.selectedPlan.BundleId, "COMP")
@@ -62,15 +78,12 @@ angular.module('vzMach')
 
 	    }
 
-	    function resetSelection(obj)
-	    {
-	        for (var i = 0; i < obj.length; i++)
-	        {
+	    function resetSelection(obj) {
+	        for (var i = 0; i < obj.length; i++) {
 	            obj.isSelected = false;
 	        }
 	    }
-	    vm.init = function ()
-	    {
+	    vm.init = function () {
 	        vm.plans = [];
 	        vm.getAllPlans = function () {
 	            vzService.getAllPlans("").then(function (data) {
@@ -78,12 +91,12 @@ angular.module('vzMach')
 	                var corePlans = _.filter(resultObj, function (o) {
 	                    return o.Type.toLowerCase().indexOf('core') >= 0;
 	                });
-                    var addOns = _.filter(resultObj, function (o) {
-                        return o.Type == "COMP";
-                    });
-                    console.log(data);
-                    constructVwObject(corePlans);
-                    constructEquipmentObject(addOns);
+	                var addOns = _.filter(resultObj, function (o) {
+	                    return o.Type == "COMP";
+	                });
+	                console.log(data);
+	                constructVwObject(corePlans);
+	                constructEquipmentObject(addOns);
 	            })
 	        }
 	        vm.equipments = [];
@@ -107,8 +120,7 @@ angular.module('vzMach')
 	                planObj.isTvOnly = true;
 	            else if (planObj.Name.toLowerCase().indexOf('data') >= 0)
 	                planObj.isDataOnly = true;
-	            else
-	            {
+	            else {
 	                planObj.isTvOnly = false;
 	                planObj.isDataOnly = false;
 	            }
@@ -165,9 +177,9 @@ angular.module('vzMach')
 	        vm.checkoutButton = false;
 	        vm.isEquipment = false;
 	    }
-	   // vm.filterName = "All types of Plans";
+	    // vm.filterName = "All types of Plans";
 	    vm.setTV = function () {
-	      
+
 	        vm.isTvOnly = true;
 	        vm.isDataOnly = false;
 	        vm.isBoth = false;
@@ -181,7 +193,7 @@ angular.module('vzMach')
 	        //vm.filterName = "Data only plans";
 	    }
 	    vm.setBoth = function () {
-	  
+
 	        vm.isTvOnly = false;
 	        vm.isDataOnly = false;
 	        vm.isBoth = true;

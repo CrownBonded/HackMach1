@@ -4278,7 +4278,7 @@ lh-drop-list, [lh-drop-list] {
     left: 0;
     z-index: 4;
     transform: translate3d(-200%,0, 0 );
-   background:#fff;
+    background: #fff;
     transition: all 0.3s ease-in-out;
 }
 
@@ -4290,17 +4290,24 @@ lh-drop-list, [lh-drop-list] {
     background: #000;
     opacity: 0.6;
 }
-.chat-overlay{
-       position: absolute;
+
+.chat-overlay {
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-     z-index: 3;
-     background: #000;
+    z-index: 3;
+    background: #000;
     opacity: 0.6;
-    display:none;
+    display: none;
 }
-.chat-div.active + .chat-overlay{
-    display:block;
+
+.chat-div.active + .chat-overlay {
+    display: block;
+}
+
+
+input[type=radio]:checked + label::before {
+    color: #cd040b;
 }

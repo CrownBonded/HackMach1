@@ -298,7 +298,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\bg\VZ_LH_marquee_00_Landing.png" />
     <Content Include="Images\custom-checkbox.png" />
+    <Content Include="Images\feedback.png" />
     <Content Include="Images\Verizon_FiOS_Logo_2015.png" />
     <Content Include="main.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
