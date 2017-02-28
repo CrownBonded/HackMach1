@@ -40,6 +40,7 @@ angular.module('vzMach')
 	            })
 	        }
 	    }
+	    $scope.isHelpEnabled = false;	   
 	    vm.init();
 	    return vm;
 	}
