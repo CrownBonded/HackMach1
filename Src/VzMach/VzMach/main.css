@@ -9,7 +9,7 @@ font sizing
 */
 @font-face {
     font-family: 'VZLighthouse';
-    src: url("../core/vz-lighthouse/fonts/VZLighthouse.ttf?isqbv7") format("truetype"), url("../core/vz-lighthouse/fonts/VZLighthouse.woff?isqbv7") format("woff"), url("../core/vz-lighthouse/fonts/VZLighthouse.svg?isqbv7#VZLighthouse") format("svg");
+    src: url("core/vz-lighthouse/fonts/VZLighthouse.ttf?isqbv7") format("truetype"), url("core/vz-lighthouse/fonts/VZLighthouse.woff?isqbv7") format("woff"), url("core/vz-lighthouse/fonts/VZLighthouse.svg?isqbv7#VZLighthouse") format("svg");
     font-weight: normal;
     font-style: normal;
 }

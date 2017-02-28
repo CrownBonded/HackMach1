@@ -6,7 +6,7 @@
         return {
             getRecommendPlans: function (zipcode) {
                 var deferred = $q.defer();
-                $http.get('/WebApi/Mach/GetRecommendPlans?zipcode=' + zipcode)
+                $http.get('WebApi/Mach/GetRecommendPlans?zipcode=' + zipcode)
                    .success(function (data) {
                        deferred.resolve(data);
                    })
@@ -86,7 +86,7 @@
             },
             getAllPlans: function (type) {
                 var deferred = $q.defer();
-                $http.get('/WebApi/Mach/GetAllBundlesByType?type=' + type)
+                $http.get('WebApi/Mach/GetAllBundlesByType?type=' + type)
                    .success(function (data) {
                        deferred.resolve(data);
                    })
@@ -97,7 +97,7 @@
             },
             getCart: function (type) {
                 var deferred = $q.defer();
-                $http.get('/WebApi/Mach/GetCart')
+                $http.get('WebApi/Mach/GetCart')
                    .success(function (data) {
                        deferred.resolve(data);
                    })
@@ -108,7 +108,7 @@
             },
             UpdateCart: function (BundleId) {
                 var deferred = $q.defer();
-                $http.get('/WebApi/Mach/UpdateCart?BundleId=' + BundleId)
+                $http.get('WebApi/Mach/UpdateCart?BundleId=' + BundleId)
                     .success(function (data) {
                         deferred.resolve(data);
                     })
@@ -119,7 +119,7 @@
             },
             UpdateAddress: function (obj) {
                 var deferred = $q.defer();
-                $http.get('/WebApi/Mach/UpdateAddress/Address' + obj)
+                $http.get('WebApi/Mach/UpdateAddress/Address' + obj)
                    .success(function (data) {
                        deferred.resolve(data);
                    })
