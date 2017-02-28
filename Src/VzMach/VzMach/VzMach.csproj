@@ -270,6 +270,7 @@
     <Content Include="Components\feedback\feedback.controller.js" />
     <Content Include="Components\feedback\feedback.html" />
     <Content Include="Components\footer\footer.controller.js" />
+    <Content Include="Components\layout\layout.controller.js" />
     <Content Include="Components\Styles\Footer.css" />
     <Content Include="Components\footer\footer.directive.js" />
     <Content Include="Components\footer\footer.html" />

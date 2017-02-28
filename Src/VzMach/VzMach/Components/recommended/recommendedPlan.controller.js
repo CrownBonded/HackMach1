@@ -144,7 +144,7 @@ angular.module('vzMach')
 	    };
 	    vm.reviewButtonClick = function()
 	    {
-	        $state.go('review');
+	        $state.go('byo');
 	    };
 	    $timeout(countUp, 500);
 	    return vm;

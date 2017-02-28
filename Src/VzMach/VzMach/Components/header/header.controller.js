@@ -15,5 +15,11 @@ angular.module('vzMach')
 	    $scope.feedback = function () {
 	        $state.go('feedback')
 	    }
+	    $scope.onChatClick = function () {
+	        if ($rootScope.chat == 'active')
+	            $rootScope.chat = '';
+	        else
+	            $rootScope.chat = 'active';
+	    };
 	}
   ]);

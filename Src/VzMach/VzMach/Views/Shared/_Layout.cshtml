@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.2/angular-sanitize.js"></script>
-   
+
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="//respframework.verizon.com/vzrf/2-20-0/stylesheets/complete/vzrf.css" rel="stylesheet" />
     <script src="//respframework.verizon.com/vzrf/2-20-0/js/complete/vzrf.js"></script>
@@ -42,20 +42,27 @@
     <script src="~/Components/shared/vzService.js"></script>
     <script src="~/Components/build-plan/build-plan.controller.js"></script>
     <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
+    <script src="~/Components/layout/layout.controller.js"></script>
     <link href="~/Components/Styles/Footer.css" rel="stylesheet"></link>
     <style type="text/css">
         .selected {
-            background-color:antiquewhite
+            background-color: antiquewhite;
         }
+
         .vzcolor {
-            color:#cd040b;
+            color: #cd040b;
         }
     </style>
 </head>
 
 <body ng-app="vzMach" class="vzrf">
 
-    <div class="container vzlh-container" style="height:calc(100vh);">
+    <div class="container vzlh-container" ng-controller="layoutController" style="height:calc(100vh);">
+        <div class="chat-div" ng-class="chat">
+            <iframe width="350" style="margin-top:50px;" height="530" src="https://console.api.ai/api-client/demo/embedded/helpchat"></iframe>
+           
+        </div>
+        <div class="chat-overlay"></div>
         <div class="main">
             <vz-loader></vz-loader>
             <div class="w_vz-notifications-container">
@@ -64,11 +71,11 @@
             <div class="w_vz-header-container">
                 <vz-header message="data"></vz-header>
             </div>
-           
+
             @RenderBody()
         </div>
         <div>
-            <vz-footer message="data"></vz-footer>
+
         </div>
     </div>
 
