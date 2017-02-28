@@ -48,11 +48,16 @@ angular
           }
       }
   })
-  .config(function (globalInitializersProvider, $stateProvider, $urlRouterProvider) {
+  .config(function (globalInitializersProvider, $stateProvider, $urlRouterProvider, $sceDelegateProvider) {
       //$logProvider.debugEnabled(true);
       //$urlRouterProvider.otherwise('/lbo');
       globalInitializersProvider.$get().initialize();
-
+      $sceDelegateProvider.resourceUrlWhitelist([
+   // Allow same origin resource loads.
+   'self',
+   // Allow loading from outer templates domain.
+   'https://console.api.ai/api-client/demo/embedded/helpchat'
+      ]);
       $urlRouterProvider.rule(function ($i, $location) {
           var path = $location.path();
           var url = $location.url().replace(path, path.toLowerCase());
@@ -75,10 +80,10 @@ angular
             controllerAs: 'vm'
         })
         .state('plans', {
-               url: "/plans",
-               templateUrl: "components/recommended/recommended.html",
-               controller: "recommendedController",
-               controllerAs: 'vm'
+            url: "/plans",
+            templateUrl: "components/recommended/recommended.html",
+            controller: "recommendedController",
+            controllerAs: 'vm'
         })
         .state('byo', {
             url: "/byo",
