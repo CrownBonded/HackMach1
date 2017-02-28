@@ -11,7 +11,7 @@
 angular.module('vzMach')
   .controller('byobController', ['$scope', '$state', '$rootScope', '$timeout','vzService',
 	function ($scope, $state, $rootScope, $timeout,vzService) {
-
+	    $rootScope.isFeedbackVisible = true;
 
 	    var vm = this;
 	    vm.isTvOnly = false;
