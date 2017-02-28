@@ -69,7 +69,7 @@
             },
             getZipDetails: function (zipcode) {
                 var deferred = $q.defer();
-                $http.get("http://maps.googleapis.com/maps/api/geocode/json?address="+zipcode+"&sensor=true")
+                $http.get("http://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDv3C6QeG-HTHEQwLg6Z5b_oLYH1ax5KaI&address=" + zipcode + "&sensor=true")
                    .success(function (data) {
                        var result = {};
                        result.city = data.results[0].address_components[1].short_name;
