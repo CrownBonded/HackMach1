@@ -70,7 +70,7 @@ angular.module('vzMach')
 	    {
 	        vm.plans = [];
 	        vm.getAllPlans = function () {
-	            vzService.getAllPlans("").then(function (data) {
+	            vzService.getAllPlans("CORE").then(function (data) {
 	                constructVwObject(JSON.parse(data));
 	            })
 	        }

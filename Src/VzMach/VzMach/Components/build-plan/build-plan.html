@@ -20,7 +20,12 @@
             <div class="w_vz-lineup-item-inner ">
                 <h4 class="w_vz-lineup-name vzcolor margin-bottom-medium">{{plan.Name}}</h4>
                 <p ng-bind-html="plan.Description"></p>
-                <p class="w_vz-lineup-price vzcolor"><b>${{plan.Price}}/mo</b></p>
+                <p class="w_vz-lineup-price vzcolor">
+                    <b>${{plan.Price}}/mo</b>
+                </p>
+                <div class="row">
+                    <button class="button margin-bottom-medium no-icon p-70" ng-click="vm.chooseBundle()">Add add-on</button>
+                </div>
             </div>
             <!--<div class="w_vz-lineup-item-bottom-container">
                 <p class="bold w_vz-lineup-item-price">{{config.TotalPrice}}/mo</p>
@@ -36,6 +41,7 @@
                 <h4 class="w_vz-lineup-name vzcolor margin-bottom-medium">{{plan.Name}}</h4>
                 <p ng-bind-html="plan.Description"></p>
                 <p class="w_vz-lineup-price vzcolor"><b>${{plan.Price}}/mo</b></p>
+                <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseBundle()">Choose this Bundle</button>
             </div>
             <!--<div class="w_vz-lineup-item-bottom-container">
                 <p class="bold w_vz-lineup-item-price">{{config.TotalPrice}}/mo</p>
@@ -50,10 +56,14 @@
 
 
         <div ng-show="vm.isTvOnly" ng-click="vm.onPlanSelect(plan.BundleId)" class="swiper_item" ng-if="plan.Price>= slider_translate.minValue && plan.Price<= slider_translate.maxValue && plan.isTvOnly">
+            ly
+             c
             <div class="w_vz-lineup-item-inner ">
+                <h4 class="w_vz-li
                 <h4 class="w_vz-lineup-name vzcolor margin-bottom-medium">{{plan.Name}}</h4>
                 <p ng-bind-html="plan.Description"></p>
                 <p class="w_vz-lineup-price vzcolor"><b>${{plan.Price}}/mo</b></p>
+                <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseBundle()">Choose this Bundle</button>
             </div>
             <!--<div class="w_vz-lineup-item-bottom-container">
                 <p class="bold w_vz-lineup-item-price">{{config.TotalPrice}}/mo</p>
@@ -67,11 +77,18 @@
             </div>
         </div>
     </div>
+    di
+    cl
 </div>
+di
+cl
 <div class="row" ng-class="{'button-container--scrolled': true}" style="position:fixed;bottom:0;width:100%;">
 
+    10
+    li
+
     <a ng-click="checkoutButtonCLick()" ng-class="{disabled: vm.checkoutButton }" class="button text-center no-icon">
-        Review lineup
+        Review
     </a>
 
 </div>

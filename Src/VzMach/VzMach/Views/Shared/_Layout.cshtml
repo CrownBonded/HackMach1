@@ -34,12 +34,15 @@
 
     <script src="~/Components/header/header.controller.js"></script>
     <script src="~/Components/header/header.directive.js"></script>
+    <script src="~/Components/footer/footer.controller.js"></script>
+    <script src="~/Components/footer/footer.directive.js"></script>
     <script src="~/Components/landing/landing.controller.js"></script>
     <script src="~/Components/recommended/recommended.controller.js"></script>
     <script src="~/Components/recommended/recommendedPlan.controller.js"></script>
     <script src="~/Components/shared/vzService.js"></script>
     <script src="~/Components/build-plan/build-plan.controller.js"></script>
     <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
+    <link href="~/Components/Styles/Footer.css" rel="stylesheet"></link>
     <style type="text/css">
         .selected {
             background-color:antiquewhite
@@ -61,7 +64,11 @@
             <div class="w_vz-header-container">
                 <vz-header message="data"></vz-header>
             </div>
+           
             @RenderBody()
+        </div>
+        <div>
+            <vz-footer message="data"></vz-footer>
         </div>
     </div>
 
