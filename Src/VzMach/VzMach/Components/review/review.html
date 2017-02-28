@@ -2,28 +2,27 @@
     <div class="w_vz-review">
         <div class="content-wrapper text-grey-1">
             <div class="row fluid-grid tiny-collapse">
-                <div class="column large-6 w_vz-review-header-container">
+                <div class="column large-2 w_vz-review-header-container">
                     <div class="w_vz-review-header-title-wrap">
                         <h2 class="w_vz-review-header-copy">Review<br> your lineup</h2>
                     </div>
                 </div>
-                <div class="no-padding-column column large-6 medium-12 tiny-12 tiny-collapse w_vz-review-details-area">
+                <div class="no-padding-column column large-10 medium-12 tiny-12 tiny-collapse w_vz-review-details-area">
                     <div class="w_vz-review-service-title">
-                        <h3 ng-bind-html="services.BundleTitle"></h3>
+                        <h3>{{vm.plans[0].Name}}</h3>
                     </div>
                     <div class="w_vz-review-products">
                         <div class="row">
                             <div class="column tiny-12 medium-6 w_vz-review-fees-container is--visible w_vz-review-monthly-fees-container--js">
                                 <div class="row w_vz-review-total-row tiny-collapse">
                                     <div class="column tiny-6 no-padding-column"><span>Monthly fees</span></div>
-                                    <div class="column tiny-6 no-padding-column"><span class="w_vz-review-price text-left" ng-bind="formatPrice(services.TotalPrice)"></span></div>
-                                    <div class="w_vz-review-section-toggle-button" ng-click="feeSectionOpenClose('monthly')"></div>
-                                    <button ng-click="feeSectionOpenClose('monthly')"></button>
+                                    <div class="column tiny-6 no-padding-column"><span class="w_vz-review-price">${{vm.TotalPrice}}/mo</span></div>
                                 </div>
-                                <div class="w_vz-review-section" ng-repeat="service in services.Services">
+                                <div class="w_vz-review-section" ng-repeat="plan in vm.plans">
                                     <div class="row tiny-collapse">
-                                        <div class="no-right-padding-column column tiny-12 tiny-collapse" ng-if="service.ServiceTitle">
-                                            <span class="bold" ng-bind="service.ServiceTitle">
+                                        <div class="no-right-padding-column column tiny-12 tiny-collapse">
+                                            <span class="bold">
+                                                {{plan.Name}}
                                             </span>
                                         </div>
                                         <!--<div class="no-right-padding-column column tiny-3 tiny-collapse" ng-if="service.IsNotAdded && service.ServiceTitle!='Phone'">
@@ -32,53 +31,20 @@
                                             </a>
                                         </div>-->
                                     </div>
-                                    <div ng-if="!service.IsNotAdded" ng-repeat="plan in service.Plans">
-                                        <div class="row tiny-collapse">
-                                            <div class="no-right-padding-column column tiny-6 tiny-collapse">
-                                                <span ng-bind-html="plan.ServiceName"></span>
-                                                <span ng-if="plan.ServiceNameUnit" ng-bind="plan.ServiceNameUnit"></span>
-                                            </div>
-                                            <div class="no-right-padding-column column tiny-3 tiny-collapse">
-                                                <span ng-bind="formatPrice(plan.Price)"></span>
-                                            </div>
-                                            <div class="no-right-padding-column column tiny-3 tiny-collapse" ng-if="service.ServiceTitle!='Phone'">
-                                                <a class="block w_vz-review-modify-links bold" ng-click="change(service)">
-                                                    <span ng-if="service.IsNotAdded">Add</span>
-                                                    <span ng-if="!service.IsNotAdded">Edit</span>
-                                                </a>
-                                            </div>
+                                    <div class="row tiny-collapse padding-all-tiny">
+                                        <div class="no-right-padding-column column tiny-6 tiny-collapse">
+                                            <span ng-bind-html="plan.Description"></span>
                                         </div>
-                                        <div class="row tiny-collapse" ng-if="plan.SubOptions != null">
-                                            <div class="no-padding-column column">
-                                                <p class="sub-options"> ( <span ng-bind-html="stringifySubOptions(plan.SubOptions)"></span> )</p>
-                                            </div>
+                                        <div class="no-right-padding-column column tiny-3 tiny-collapse">
+                                            <span class="">${{plan.Price}}/mo</span>
                                         </div>
-                                        <div class="row tiny-collapse" ng-repeat="addon in service.AddOns">
-                                            <div ng-repeat="option in addon.Options">
-                                                <div class="row tiny-collapse">
-                                                    <div class="no-right-padding-column column tiny-6">
-                                                        <span ng-bind-html="option.AddonName"></span>
-                                                    </div>
-                                                    <div class="no-right-padding-column column tiny-3 tiny-collapse">
-                                                        <span ng-if="0 !== option.Price">{{formatPrice(option.Price)}}</span>
-                                                        <span ng-if="0 === option.Price">Included</span>
-                                                    </div>
-                                                    <div class="no-right-padding-column column tiny-3 tiny-collapse">
-                                                        <a ng-if="option.AddonUrl" class="block w_vz-review-modify-links bold" ng-click="change(service, option.AddonUrl)">
-                                                            <span ng-if="service.IsNotAdded">Add</span>
-                                                            <span ng-if="!service.IsNotAdded">Edit</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="row tiny-collapse" ng-if="option.SubOptions != null">
-                                                    <div class="no-right-padding-column column">
-                                                        <p class="sub-options"> ( <span ng-bind-html="stringifySubOptions(option.SubOptions)"></span> )</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="no-right-padding-column column tiny-3 tiny-collapse">
+                                            <a class="block w_vz-review-modify-links bold">
+                                                <span>Edit</span>
+                                            </a>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                                 <div class="row tiny-collapse">
                                     <div class="no-right-padding-column column tiny-6 tiny-collapse bottom-row">
@@ -92,11 +58,11 @@
             </div>
         </div>
         <div class="row fluid-grid tiny-collapse">
-            <div class="no-right-padding-column column tiny-12">
-                <a class="button text-center margin-bottom-zero" ng-click="checkoutClick()">Check out</a>
+            <div class="no-right-padding-column column tiny-12" style="position:fixed;bottom:0;">
+                <a class="button text-center margin-bottom-zero" ng-click="checkoutClick()">Submit</a>
             </div>
         </div>
     </div>
 </div>
 
-</div>
+

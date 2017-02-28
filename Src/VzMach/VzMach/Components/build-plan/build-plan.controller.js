@@ -45,7 +45,7 @@ angular.module('vzMach')
 	        if (vm.selectedEquipment != null) {
 	            vzService.UpdateCart(vm.selectedPlan.BundleId, "COMP")
 	        }
-	        $state.go('/');
+	        $state.go('review');
 	    };
 	    vm.chooseBundle = function (plan) {
 	        resetSelection(vm.plans);

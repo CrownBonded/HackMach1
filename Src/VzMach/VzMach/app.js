@@ -95,6 +95,12 @@ angular
           controller: 'recommendedPlanController',
           params: { index: 0 },
           controllerAs: 'vm'
+      })
+      .state('review', {
+          url: "/review",
+          templateUrl: 'components/review/review.html',
+          controller: 'reviewController',
+          controllerAs: 'vm'
       });
 
 
