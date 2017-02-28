@@ -225,7 +225,7 @@ namespace VzMach.WebApi
             {
                 if (type == "CORE")
                     Session["BundleId"] = BundleId;
-                else if (type == "COMP")
+                else if (type.Contains("COMP"))
                     Session["CompId"] = BundleId;
                 return true;
             }
