@@ -16,6 +16,9 @@ angular.module('vzMach')
 	    vm.index = $stateParams.index;
 	    vm.listIndex = 0;
 	    vm.equipIndex = 0;
+	    vm.selectedPlan = null;
+	    vm.selectedEquipment = null;
+	    vm.isByo = true;
 	    var zipcode = vzService.getZipcode();
 	    var city = vzService.getCity();
 	    var result = {};
@@ -107,12 +110,14 @@ angular.module('vzMach')
 	                return o.Name.toLowerCase().indexOf("tv") < 0;
 	            });
 	        }
+	        vm.isByo = false;
 	        vm.selectedPlan = plan;
 	        $("#plans").slideUp();
 	        $("#equipment").slideDown();
 	    }
 	    vm.chooseEquipment = function () {
 	        vm.chosenBundleMessage = vm.selectedPlan.planName + vm.equipments[vm.equipIndex].Name;
+	        vm.selectedEquipment = vm.equipments[vm.equipIndex];
 	        $("#equipment").slideUp();
 	        $("#chosenBundle").slideDown();
 
@@ -126,11 +131,13 @@ angular.module('vzMach')
 	        vm.equipments = vm.savedEquipments;
 	        $("#chosenBundle").slideUp();
 	        $("#plans").slideDown();
+	        vm.isByo = true;
 	    }
 	    vm.goBack = function () {
 	        vm.equipments = vm.savedEquipments;
 	        $("#equipment").slideUp();
 	        $("#plans").slideDown();
+            vm.isByo = true;
 	    }
 	    vm.buildplanButtonClick = function () {
 	        $state.go('byo');
@@ -144,7 +151,14 @@ angular.module('vzMach')
 	    };
 	    vm.reviewButtonClick = function()
 	    {
-	        $state.go('byo');
+	        if (vm.selectedPlan != null) {
+	            vzService.UpdateCart(vm.selectedPlan.BundleId, "CORE")
+	        }
+	        if (vm.selectedEquipment != null) {
+	            vzService.UpdateCart(vm.selectedPlan.BundleId, "COMP")
+	        }
+
+	        $state.go('/');
 	    };
 	    $timeout(countUp, 500);
 	    return vm;

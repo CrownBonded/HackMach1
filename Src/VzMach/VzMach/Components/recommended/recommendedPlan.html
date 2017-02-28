@@ -42,31 +42,32 @@
        
 
     </div>
-    <div class="row container" style="margin-top:50px;display:none; text-align:center" id="equipment">
-        <h6 class="margin-bottom-medium">Following is our most  recommended Equipment bundle. Wanna grab?</h6>
+    <div class="row container" style="justify-content:space-between;margin-top:50px;display:none; text-align:center" id="equipment">
+        <h6 class="margin-bottom-medium">The below equipments will be added by default, which can be edited in Checkout page.</h6>
         <p class="text-xxlarge" ng-bind-html="vm.equipments[vm.equipIndex].Name"></p>
         <p class="vzcolor text-xxlarge"><b>${{vm.equipments[vm.equipIndex].Price}}</b></p>
         <div class="row">
-            <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseEquipment()">Yes</button>
-            <button class="button mw-medium margin-bottom-medium" ng-click="vm.rejectEquipment()">No</button>
+            <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseEquipment()">Ok</button>
             <button class="button mw-medium margin-bottom-medium" ng-click="vm.goBack()">Back</button>
         </div>
 
     </div>
-    <div class="row" id="chosenBundle" style="margin-top:50px;display:none;text-align:center">
+    <div class="row" id="chosenBundle" style="justify-content:space-between;margin-top:50px;display:none;text-align:center">
         <h6 class="margin-bottom-medium">You Have Chosen,</h6>
         <p class="text-xxlarge"><b ng-bind-html="vm.chosenBundleMessage"></b></p>
-        <button class="button mw-medium margin-bottom-medium">Confirm</button>
         <button class="button mw-medium margin-bottom-medium" ng-click="vm.cancel()">Cancel</button>
     </div>
 </div>
 
 
-<div class="row fluid-grid" style="position:fixed;bottom:0;width:100%;">
-    <a ng-click="vm.back()" class="button left secondary text-center no-focus-effect no-icon p-30">
+<div class="row" style="position:fixed;bottom:0;width:100%;">
+    <a ng-click="vm.back()" class="button left secondary text-center no-focus-effect no-icon p-50">
         Back
     </a>
-    <a ng-click="vm.reviewButtonClick()" class="button left text-center no-focus-effect no-icon p-70">
-        Build your own
+    <a ng-click="vm.reviewButtonClick()" ng-show="!vm.isByo"class="button left text-center no-focus-effect no-icon p-50">
+        Checkout
+    </a>
+    <a ng-click="vm.buildplanButtonClick()" ng-show="vm.isByo" class="button left text-center no-focus-effect no-icon p-50">
+        Build your Own Bundle
     </a>
 </div>
