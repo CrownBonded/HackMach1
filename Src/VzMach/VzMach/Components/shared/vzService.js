@@ -106,9 +106,9 @@
                    });
                 return deferred.promise;
             },
-            UpdateCart: function (BundleId) {
+            UpdateCart: function (BundleId,BundleType) {
                 var deferred = $q.defer();
-                $http.get('WebApi/Mach/UpdateCart?BundleId=' + BundleId)
+                $http.get('WebApi/Mach/UpdateCart?BundleId=' + BundleId + '&BundleType=' + BundleType)
                     .success(function (data) {
                         deferred.resolve(data);
                     })
