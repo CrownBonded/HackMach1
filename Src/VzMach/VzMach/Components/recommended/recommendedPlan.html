@@ -43,20 +43,19 @@
 
     </div>
     <div class="row container" style="justify-content:space-between;margin-top:50px;display:none; text-align:center" id="equipment">
-        <h6 class="margin-bottom-medium">The below equipments will be added by default, which can be edited in Checkout page.</h6>
+        <h6 class="margin-bottom-medium">The below equipments are added with the plan.</h6>
         <p class="text-xxlarge" ng-bind-html="vm.equipments[vm.equipIndex].Name"></p>
         <p class="vzcolor text-xxlarge"><b>${{vm.equipments[vm.equipIndex].Price}}</b></p>
         <div class="row">
-            <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseEquipment()">Ok</button>
-            <button class="button mw-medium margin-bottom-medium" ng-click="vm.goBack()">Back</button>
+            <button class="button mw-medium secondary p-50 margin-bottom-medium no-icon" ng-click="vm.goBack()">Change Plan</button>
         </div>
 
     </div>
-    <div class="row" id="chosenBundle" style="justify-content:space-between;margin-top:50px;display:none;text-align:center">
+    <!--<div class="row" id="chosenBundle" style="justify-content:space-between;margin-top:50px;display:none;text-align:center">
         <h6 class="margin-bottom-medium">You Have Chosen,</h6>
         <p class="text-xxlarge"><b ng-bind-html="vm.chosenBundleMessage"></b></p>
         <button class="button mw-medium margin-bottom-medium" ng-click="vm.cancel()">Cancel</button>
-    </div>
+    </div>-->
 </div>
 
 

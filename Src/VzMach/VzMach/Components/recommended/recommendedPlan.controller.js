@@ -112,29 +112,35 @@ angular.module('vzMach')
 	                return o.Name.toLowerCase().indexOf("tv") < 0;
 	            });
 	        }
+	        else if ((plan.Description).toLowerCase().indexOf("tv") > 0) {
+	            vm.equipments = _.filter(vm.equipments, function (o) {
+	                return o.Name.toLowerCase().indexOf("tv") > 0;
+	            });
+	        }
 	        vm.isByo = false;
 	        vm.selectedPlan = plan;
+	        vm.selectedEquipment = vm.equipments[vm.equipIndex];
 	        $("#plans").slideUp();
 	        $("#equipment").slideDown();
 	    }
-	    vm.chooseEquipment = function () {
-	        vm.chosenBundleMessage = vm.selectedPlan.planName + vm.equipments[vm.equipIndex].Name;
-	        vm.selectedEquipment = vm.equipments[vm.equipIndex];
-	        $("#equipment").slideUp();
-	        $("#chosenBundle").slideDown();
+	    //vm.chooseEquipment = function () {
+	    //    vm.chosenBundleMessage = vm.selectedPlan.planName + vm.equipments[vm.equipIndex].Name;
+	    //    vm.selectedEquipment = vm.equipments[vm.equipIndex];
+	    //    $("#equipment").slideUp();
+	    //    $("#chosenBundle").slideDown();
 
-	    }
-	    vm.rejectEquipment = function () {
-	        vm.chosenBundleMessage = vm.slides[vm.index].plans[vm.listIndex].planName;
-	        $("#equipment").slideUp();
-	        $("#chosenBundle").slideDown();
-	    }
-	    vm.cancel = function () {
-	        vm.equipments = vm.savedEquipments;
-	        $("#chosenBundle").slideUp();
-	        $("#plans").slideDown();
-	        vm.isByo = true;
-	    }
+	    //}
+	    //vm.rejectEquipment = function () {
+	    //    vm.chosenBundleMessage = vm.slides[vm.index].plans[vm.listIndex].planName;
+	    //    $("#equipment").slideUp();
+	    //    $("#chosenBundle").slideDown();
+	    //}
+	    //vm.cancel = function () {
+	    //    vm.equipments = vm.savedEquipments;
+	    //    $("#chosenBundle").slideUp();
+	    //    $("#plans").slideDown();
+	    //    vm.isByo = true;
+	    //}
 	    vm.goBack = function () {
 	        vm.equipments = vm.savedEquipments;
 	        $("#equipment").slideUp();
@@ -154,13 +160,17 @@ angular.module('vzMach')
 	    vm.reviewButtonClick = function()
 	    {
 	        if (vm.selectedPlan != null || vm.selectedPlan != undefined) {
-	            vzService.UpdateCart(vm.selectedPlan.BundleId, "CORE")
+	            vzService.UpdateCart(vm.selectedPlan.BundleId, "CORE").then(function () {
+	                if (vm.selectedEquipment != null || vm.selectedEquipment != undefined) {
+	                    vzService.UpdateCart(vm.selectedEquipment.BundleId, "COMP").then(function () {
+	                        $state.go('review');
+	                    })
+	                }
+	            })
 	        }
-	        if (vm.selectedEquipment != null || vm.selectedEquipment != undefined) {
-	            vzService.UpdateCart(vm.selectedEquipment.BundleId, "COMP")
-	        }
+	        
 
-	        $state.go('review');
+	        
 	    };
 	    $timeout(countUp, 500);
 	    return vm;

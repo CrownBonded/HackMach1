@@ -36,11 +36,11 @@
                                             <span ng-bind-html="plan.Description"></span>
                                         </div>
                                         <div class="no-right-padding-column column tiny-3 tiny-collapse">
-                                            <span class="">${{plan.Price}}/mo</span>
+                                            <span class="">${{plan.Price}}</span>
                                         </div>
                                         <div class="no-right-padding-column column tiny-3 tiny-collapse">
                                             <a class="block w_vz-review-modify-links bold">
-                                                <span>Edit</span>
+                                                <span ng-click="vm.changePlan()">Edit</span>
                                             </a>
                                         </div>
                                     </div>

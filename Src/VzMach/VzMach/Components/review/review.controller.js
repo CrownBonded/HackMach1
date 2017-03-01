@@ -25,10 +25,15 @@
 	                    planObj.BundleId = bundles[i].BundleId;
 	                    planObj.Price = parseFloat(bundles[i].Price);
 	                    vm.TotalPrice += planObj.Price;
+	                    
 	                    vm.plans.push(planObj);
 	                }
 	            }
+	            vm.TotalPrice = vm.TotalPrice.toFixed(2);
 	        })
 	    }
 	    vm.init();
+	    vm.changePlan = function () {
+	        $state.go('recommended');
+	    }
 	} ]);

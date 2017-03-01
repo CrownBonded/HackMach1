@@ -1,4 +1,4 @@
-﻿<div class="row padding-all-tiny">
+﻿<div class="row padding-all-tiny" id="slider">
     <div class="wrapper">
         <article>
             <rzslider rz-slider-model="slider_translate.minValue" rz-slider-high="slider_translate.maxValue" rz-slider-options="slider_translate.options"></rzslider>
@@ -34,12 +34,10 @@
 
         <div ng-show="vm.isDataOnly" class="swiper_item" ng-click="vm.select()" ng-repeat="plan in vm.plans" ng-if="plan.Price>= slider_translate.minValue && plan.Price<= slider_translate.maxValue && plan.isDataOnly">
             <div class="w_vz-lineup-item-inner padding-left-tiny">
+                <button class="button margin-top-medium margin-bottom-medium no-icon p-50 right" ng-click="vm.chooseBundle(plan)">Select</button>
                 <p class="bold text-xxlarge margin-bottom-small">{{plan.Name}}</p>
                 <p ng-bind-html="plan.Description"></p>
                 <p class="w_vz-lineup-price vzcolor"><b>${{plan.Price}}/mo</b></p>
-                <div class="row">
-                    <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseBundle(plan)">Select</button>
-                </div>
 
                 <hr class="strech" style="margin-bottom:0;" />
             </div>
@@ -48,20 +46,18 @@
 
         <div ng-show="vm.isTvOnly" ng-click="vm.onPlanSelect(plan.BundleId)" ng-repeat="plan in vm.plans" class="swiper_item" ng-if="plan.Price>= slider_translate.minValue && plan.Price<= slider_translate.maxValue && plan.isTvOnly">
             <div class="w_vz-lineup-item-inner padding-left-tiny">
+                <button class="button margin-top-medium margin-bottom-medium no-icon p-50 right" ng-click="vm.chooseBundle(plan)">Select</button>
                 <p class="bold text-xxlarge margin-bottom-small">{{plan.Name}}</p>
                 <p ng-bind-html="plan.Description"></p>
                 <p class="w_vz-lineup-price vzcolor"><b>${{plan.Price}}/mo</b></p>
-                <div class="row">
-                    <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseBundle(plan)">Select</button>
-                </div>
                 <hr class="strech" style="margin-bottom:0;" />
             </div>
         </div>
     </div>
 </div>
 <h6 class="margin-bottom-large" ng-show="vm.isEquipment">Please pick your Equipment</h6>
-<div class="row clearfix fluid-grid margin-bottom-large" id="equipments" style="display:none">
-    <div class="swiper-container strech" style="max-height:calc(75vh - 40px); overflow-y:auto;">
+<div class="row clearfix fluid-grid margin-bottom-large" id="equipments" style="display:none;max-height:calc(75vh - 40px); overflow-y:auto;">
+    <div class="swiper-container strech" style="">
 
         <div ng-repeat="equipment in vm.equipments">
             <div class="w_vz-lineup-item-inner ">
@@ -86,21 +82,23 @@
 
 </div>
 <div class="row" id="chosenBundle" style="margin-top:50px;display:none;text-align:center">
-    <h6 class="margin-bottom-medium">otYou Have Chosen,</</h6>
-    6>
-     n
+    <h6 class="margin-bottom-medium">You Have Chosen,</h6>
+
     <p class="text-xxlarge"><b ng-bind-html="vm.chosenBundleMessage"></b></p>
 
     <button class="button mw-medium margin-bottom-medium" ng-click="vm.cancel()">Go back to Plans</button>
 </div>
 <div class="row" ng-class="{'button-container--scrolled': true}" style="position:fixed;bottom:0;width:100%;">
-    <a ng-click="checkoutButtonCLick()" ng-class="{disabled: !vm.checkoutButton }" class="button text-center no-icon">
+    <a class="button left secondary text-center no-focus-effect no-icon p-50" ng-show="!vm.isEquipment" ng-click="vm.goRecommended()"> Back</a>
+    <a ng-click="vm.checkoutButtonClick()" ng-class="{disabled: !vm.checkoutButton }" ng-show="!vm.isEquipment" class="button text-center no-icon p-50">
         Checkout
     </a>
+    <a class="button left secondary text-center no-focus-effect no-icon p-50" ng-show="vm.isEquipment" ng-click="vm.goBack()">Change Plan</a>
+    <!--<a class="button left  text-center no-focus-effect no-icon p-50" ng-show="vm.isEquipment" ng-click="vm.rejectEquipment()">Skip </a>-->
 
 </div>
-<div class="row" ng-show="vm.isEquipment" style="position:fixed;bottom:0;width:100%;margin-top:100px">
+<!--<div class="row" ng-show="vm.isEquipment" style="position:fixed;bottom:0;width:100%;margin-top:100px">
     <a class="button left secondary text-center no-focus-effect no-icon p-50" ng-click="vm.goBack()"> Back</a>
     <a class="button left  text-center no-focus-effect no-icon p-50" ng-click="vm.rejectEquipment()">Skip </a>
 
-</div>
+</div>-->
