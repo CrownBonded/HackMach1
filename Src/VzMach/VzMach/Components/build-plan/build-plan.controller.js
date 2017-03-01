@@ -20,6 +20,7 @@ angular.module('vzMach')
 	    vm.selectedEquipment = null;
 	    vm.selectedPlan = null;
 	    vm.isEquipment = false;
+	    vm.streetAddress = vzService.getStreetAddress();
 	    //Slider config with custom display function
 	    $scope.slider_translate = {
 	        minValue: 100,
@@ -55,6 +56,7 @@ angular.module('vzMach')
 	    };
 	    vm.checkoutButton = false;
 	    vm.checkoutButtonClick = function () {
+	        vzService.setStreetAddress(vm.streetAddress);
 	        if (vm.selectedPlan != null) {
 	            vzService.UpdateCart(vm.selectedPlan.BundleId, "CORE").then(function () {
 	                if (vm.selectedEquipment != null) {

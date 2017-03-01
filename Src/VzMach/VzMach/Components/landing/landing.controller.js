@@ -12,12 +12,14 @@ angular.module('vzMach')
   .controller('landingController', ['$scope', '$state', '$rootScope', '$timeout', 'vzService',
 	function ($scope, $state, $rootScope, $timeout, vzService) {
 	    var vm = this;
+	    vm.streetAddress = "";
 	    vm.update = function () {
 	        $state.go("recommended");
 	    };
 	    vm.continue = function () {
 	        vzService.setZipcode(vm.zipcode)
 	        vzService.setCity(vm.city)
+	        vzService.setStreetAddress(vm.streetAddress)
 	        $state.go("recommended");
 	    };
 	    vm.init = function () {

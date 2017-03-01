@@ -36,4 +36,9 @@
 	    vm.changePlan = function () {
 	        $state.go('recommended');
 	    }
+	    vm.submitClick = function () {
+	        $("#review").slideUp();
+	        $("#orderPlaced").slideDown();
+	        $("#submitButton").slideUp();
+	    }
 	} ]);

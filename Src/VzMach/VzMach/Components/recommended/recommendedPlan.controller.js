@@ -19,6 +19,7 @@ angular.module('vzMach')
 	    vm.selectedPlan = null;
 	    vm.selectedEquipment = null;
 	    vm.isByo = true;
+	    vm.streetAddress = vzService.getStreetAddress();
 	    var zipcode = vzService.getZipcode();
 	    var city = vzService.getCity();
 	    var result = {};
@@ -159,6 +160,7 @@ angular.module('vzMach')
 	    };
 	    vm.reviewButtonClick = function()
 	    {
+	        vzService.setStreetAddress(vm.streetAddress);
 	        if (vm.selectedPlan != null || vm.selectedPlan != undefined) {
 	            vzService.UpdateCart(vm.selectedPlan.BundleId, "CORE").then(function () {
 	                if (vm.selectedEquipment != null || vm.selectedEquipment != undefined) {
@@ -168,9 +170,6 @@ angular.module('vzMach')
 	                }
 	            })
 	        }
-	        
-
-	        
 	    };
 	    $timeout(countUp, 500);
 	    return vm;

@@ -7,7 +7,7 @@
                         <h2 class="w_vz-review-header-copy">Review<br> your lineup</h2>
                     </div>
                 </div>
-                <div class="no-padding-column column large-10 medium-12 tiny-12 tiny-collapse w_vz-review-details-area">
+                <div class="no-padding-column column large-10 medium-12 tiny-12 tiny-collapse w_vz-review-details-area" id="review">
                     <div class="w_vz-review-service-title">
                         <h3>{{vm.plans[0].Name}}</h3>
                     </div>
@@ -55,11 +55,16 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="no-padding-column column large-10 medium-12 tiny-12 tiny-collapse w_vz-review-details-area" id="orderPlaced" style="display:none">
+                    <div class="w_vz-review-service-title">
+                        <h6>Your Order Has been placed . Thank you for choosing Verizon! </h6>
+                    </div>
+                </div>
+                </div>
         </div>
-        <div class="row fluid-grid tiny-collapse">
+        <div class="row fluid-grid tiny-collapse" id="submitButton">
             <div class="no-right-padding-column column tiny-12" style="position:fixed;bottom:0;">
-                <a class="button text-center margin-bottom-zero" ng-click="checkoutClick()">Submit</a>
+                <a class="button text-center margin-bottom-zero" ng-click="vm.submitClick()">Submit</a>
             </div>
         </div>
     </div>

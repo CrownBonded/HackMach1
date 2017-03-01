@@ -67,6 +67,12 @@
             getCity: function () {
                 return localStorage.city;
             },
+            setStreetAddress: function (streetAddress) {
+                localStorage.streetAddress = streetAddress;
+            },
+            getStreetAddress: function (streetAddress) {
+                return localStorage.streetAddress;
+            },
             getZipDetails: function (zipcode) {
                 var deferred = $q.defer();
                 $http.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDv3C6QeG-HTHEQwLg6Z5b_oLYH1ax5KaI&address=" + zipcode + "&sensor=true")

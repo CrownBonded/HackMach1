@@ -87,10 +87,22 @@
     <p class="text-xxlarge"><b ng-bind-html="vm.chosenBundleMessage"></b></p>
 
     <button class="button mw-medium margin-bottom-medium" ng-click="vm.cancel()">Go back to Plans</button>
+    <div class="row">
+        <p class="text-xxlarge">Verify/ Enter Street Address and Checkout</p>
+        <div class="medium-4 columns">
+            &nbsp; &nbsp;
+        </div>
+        <div class="medium-4 columns">
+            <input address="" id="lraddress" placeholder="Street address" ng-model="vm.streetAddress" class="marketing">
+        </div>
+        <div class="medium-4 columns">
+            &nbsp; &nbsp;
+        </div>
+    </div>
 </div>
 <div class="row" ng-class="{'button-container--scrolled': true}" style="position:fixed;bottom:0;width:100%;">
     <a class="button left secondary text-center no-focus-effect no-icon p-50" ng-show="!vm.isEquipment" ng-click="vm.goRecommended()"> Back</a>
-    <a ng-click="vm.checkoutButtonClick()" ng-class="{disabled: !vm.checkoutButton }" ng-show="!vm.isEquipment" class="button text-center no-icon p-50">
+    <a ng-click="vm.checkoutButtonClick()" ng-class="{disabled: (!vm.checkoutButton && vm.streetAddress == '')}" ng-show="!vm.isEquipment" class="button text-center no-icon p-50">
         Checkout
     </a>
     <a class="button left secondary text-center no-focus-effect no-icon p-50" ng-show="vm.isEquipment" ng-click="vm.goBack()">Change Plan</a>

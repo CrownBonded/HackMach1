@@ -49,6 +49,19 @@
         <div class="row">
             <button class="button mw-medium secondary p-50 margin-bottom-medium no-icon" ng-click="vm.goBack()">Change Plan</button>
         </div>
+        <div class="row">
+           <p class="text-xxlarge">Verify/ Enter Street Address and Checkout</p>
+            <div class="medium-4 columns">
+                &nbsp; &nbsp;
+            </div>
+            <div class="medium-4 columns">
+                <input address="" id="lraddress" placeholder="Street address" ng-model="vm.streetAddress" class="marketing">
+            </div>
+            <div class="medium-4 columns">
+                &nbsp; &nbsp;
+            </div>
+        </div>
+
 
     </div>
     <!--<div class="row" id="chosenBundle" style="justify-content:space-between;margin-top:50px;display:none;text-align:center">
@@ -63,7 +76,7 @@
     <a ng-click="vm.back()" class="button left secondary text-center no-focus-effect no-icon p-50">
         Back
     </a>
-    <a ng-click="vm.reviewButtonClick()" ng-show="!vm.isByo"class="button left text-center no-focus-effect no-icon p-50">
+    <a ng-click="vm.reviewButtonClick()" ng-class="{disabled : vm.streetAddress==''}" ng-show="!vm.isByo"class="button left text-center no-focus-effect no-icon p-50">
         Checkout
     </a>
     <a ng-click="vm.buildplanButtonClick()" ng-show="vm.isByo" class="button left text-center no-focus-effect no-icon p-50">
