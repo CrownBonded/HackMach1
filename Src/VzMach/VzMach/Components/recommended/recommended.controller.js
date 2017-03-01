@@ -9,8 +9,8 @@
  */
 
 angular.module('vzMach')
-  .controller('recommendedController', ['$scope', '$state', '$rootScope', '$timeout',
-	function ($scope, $state, $rootScope, $timeout) {
+  .controller('recommendedController', ['$scope', '$state', '$rootScope', '$timeout','vzService',
+	function ($scope, $state, $rootScope, $timeout, vzService) {
 	    $rootScope.isFeedbackVisible = false;
 	    var vm = this;
 	    vm.select = function (indexValue) {
@@ -19,6 +19,9 @@ angular.module('vzMach')
 	    vm.OnBuildBundleClick = function () {
 	        $state.go("byo");
 	    };
+	    vm.city = vzService.getCity();
+	        
 	    return vm;
+	  
 	}
   ]);

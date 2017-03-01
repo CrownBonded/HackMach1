@@ -48,11 +48,16 @@ angular
           }
       }
   })
-  .config(function (globalInitializersProvider, $stateProvider, $urlRouterProvider) {
+  .config(function (globalInitializersProvider, $stateProvider, $urlRouterProvider, $sceDelegateProvider) {
       //$logProvider.debugEnabled(true);
       //$urlRouterProvider.otherwise('/lbo');
       globalInitializersProvider.$get().initialize();
-
+      $sceDelegateProvider.resourceUrlWhitelist([
+   // Allow same origin resource loads.
+   'self',
+   // Allow loading from outer templates domain.
+   'https://console.api.ai/api-client/demo/embedded/helpchat'
+      ]);
       $urlRouterProvider.rule(function ($i, $location) {
           var path = $location.path();
           var url = $location.url().replace(path, path.toLowerCase());
@@ -89,19 +94,19 @@ angular
             controller: 'byobController',
             controllerAs: 'vm'
         })
-        .state('feedback', {
-            url: "/",
-            templateUrl: "components/feedback/feedback.html",
-            controller: "feedbackController",
-            controllerAs: "vm"
-        })
-        .state('recommendedPlan', {
-            url: "/selected",
-            templateUrl: 'components/recommended/recommendedPlan.html',
-            controller: 'recommendedPlanController',
-            params: { index: 0 },
-            controllerAs: 'vm'
-        });
+      .state('recommendedPlan', {
+          url: "/selected",
+          templateUrl: 'components/recommended/recommendedPlan.html',
+          controller: 'recommendedPlanController',
+          params: { index: 0 },
+          controllerAs: 'vm'
+      })
+      .state('review', {
+          url: "/review",
+          templateUrl: 'components/review/review.html',
+          controller: 'reviewController',
+          controllerAs: 'vm'
+      });
 
 
   })

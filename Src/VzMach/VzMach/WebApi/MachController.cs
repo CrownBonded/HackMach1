@@ -168,7 +168,7 @@ namespace VzMach.WebApi
             {
                 if (row != null)
                 {
-                    if (!string.IsNullOrWhiteSpace(type) && row["Type"].ToString().Trim() != type)
+                    if (!string.IsNullOrWhiteSpace(type) && !row["Type"].ToString().Trim().Contains(type))
                         continue;
                     BundleModel bun = new BundleModel();
                     bun.BundleId = row["BundleId"].ToString();
@@ -225,7 +225,7 @@ namespace VzMach.WebApi
             {
                 if (type == "CORE")
                     Session["BundleId"] = BundleId;
-                else if (type == "COMP")
+                else if (type.Contains("COMP"))
                     Session["CompId"] = BundleId;
                 return true;
             }

@@ -69,7 +69,7 @@
             },
             getZipDetails: function (zipcode) {
                 var deferred = $q.defer();
-                $http.get("http://maps.googleapis.com/maps/api/geocode/json?address="+zipcode+"&sensor=true")
+                $http.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDv3C6QeG-HTHEQwLg6Z5b_oLYH1ax5KaI&address=" + zipcode + "&sensor=true")
                    .success(function (data) {
                        var result = {};
                        result.city = data.results[0].address_components[1].short_name;
@@ -106,9 +106,9 @@
                    });
                 return deferred.promise;
             },
-            UpdateCart: function (BundleId) {
+            UpdateCart: function (BundleId,BundleType) {
                 var deferred = $q.defer();
-                $http.get('WebApi/Mach/UpdateCart?BundleId=' + BundleId)
+                $http.get('WebApi/Mach/UpdateCart?BundleId=' + BundleId + '&type=' + BundleType)
                     .success(function (data) {
                         deferred.resolve(data);
                     })

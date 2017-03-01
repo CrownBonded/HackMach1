@@ -11,5 +11,8 @@
 angular.module('vzMach')
   .controller('FooterCtrl', ['$scope', '$state', '$rootScope', '$timeout',
 	function ($scope, $state, $rootScope, $timeout) {
+	    $scope.helpEnabled = function () {
+	        $scope.isHelpEnabled = true;
+	    }
 	}
   ]);
