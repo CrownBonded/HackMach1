@@ -75,10 +75,10 @@ angular
             controllerAs: 'vm'
         })
         .state('plans', {
-               url: "/plans",
-               templateUrl: "components/recommended/recommended.html",
-               controller: "recommendedController",
-               controllerAs: 'vm'
+            url: "/plans",
+            templateUrl: "components/recommended/recommended.html",
+            controller: "recommendedController",
+            controllerAs: 'vm'
         })
         .state('byo', {
             url: "/byo",
@@ -89,13 +89,19 @@ angular
             controller: 'byobController',
             controllerAs: 'vm'
         })
-      .state('recommendedPlan', {
-          url: "/selected",
-          templateUrl: 'components/recommended/recommendedPlan.html',
-          controller: 'recommendedPlanController',
-          params: { index: 0 },
-          controllerAs: 'vm'
-      });
+        .state('feedback', {
+            url: "/",
+            templateUrl: "components/feedback/feedback.html",
+            controller: "feedbackController",
+            controllerAs: "vm"
+        })
+        .state('recommendedPlan', {
+            url: "/selected",
+            templateUrl: 'components/recommended/recommendedPlan.html',
+            controller: 'recommendedPlanController',
+            params: { index: 0 },
+            controllerAs: 'vm'
+        });
 
 
   })
